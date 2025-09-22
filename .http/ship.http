@@ -1,0 +1,12 @@
+@baseUrl = http://localhost:3000
+
+### Onboarding a ship
+POST {{baseUrl}}/ship/onboarding
+Content-Type: application/json
+
+{
+  "name": "Ship #{{$randomInt 100000 999999}}"
+}
+
+### Get all ships
+GET {{baseUrl}}/ship
