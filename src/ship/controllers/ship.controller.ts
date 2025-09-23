@@ -1,8 +1,18 @@
-import { Body, Controller, Get, HttpCode, Logger, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  Logger,
+  Post,
+  UseGuards,
+} from '@nestjs/common';
+import { JwtGuard } from 'src/auth/jwt.guard';
 import { CreateShipDto } from '../dtos/create-ship.dto';
 import { ShipService } from '../services/ship.service';
 
 @Controller('ship')
+@UseGuards(JwtGuard)
 export class ShipController {
   private readonly logger = new Logger(ShipController.name);
 
