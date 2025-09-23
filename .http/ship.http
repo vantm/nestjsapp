@@ -1,12 +1,22 @@
 @baseUrl = http://localhost:3000
 
+###
+# @name foo
+# @prompt accessToken Access Token
+GET {{baseUrl}}/health
+Authorization: Bearer {{accessToken}}
+
+###
+# @name getShip
+GET {{baseUrl}}/ship
+Authorization: {{foo.request.headers.Authorization}}
+
 ### Onboarding a ship
 POST {{baseUrl}}/ship/onboarding
+Authorization: {{foo.request.headers.Authorization}}
 Content-Type: application/json
 
 {
   "name": "Ship #{{$randomInt 100000 999999}}"
 }
 
-### Get all ships
-GET {{baseUrl}}/ship

@@ -1,4 +1,10 @@
 @baseUrl = http://localhost:3000
 
+# @name foo
+# @prompt accessToken Access Token
+GET {{baseUrl}}
+Authorization: Bearer {{accessToken}}
+
 ### Get all topics
 GET {{baseUrl}}/topic
+Authorization: {{foo.request.headers.Authorization}}
