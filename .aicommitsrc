@@ -1,0 +1,21 @@
+# Commit instrutions
+
+## Commit format
+
+The commit message must be short, very summary of the whole change. If there are
+too much, use a bullet list for describe the change.
+
+EXAMPLE COMMIT MESSAG:
+
+```
+feat(<module>): some very concise and short description to summary changes
+- Description for 1st change
+- Description for 2nd change
+- Description for 3rd chante
+```
+
+## Directory commit rules
+
+- `.http` - use `chore(.http)` : contains HTTP files for dev/test only. Changes
+  doesn't affect logic.
+- `.vscode` - use `chore(.vscode)` : contains VS Code configs.
