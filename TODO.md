@@ -1,6 +1,6 @@
 Passenger Module CRUD +central +passenger {cm:2025-09-28}
 Voyage Module CRUD +central +voyage {cm:2025-09-28}
-Local Hub Access Token provision +central +onboarding +ship {due:2025-09-28} {start:2025-09-28T12:11:31}
+Local Hub Access Token provision +central +onboarding +ship {due:2025-09-28} {start:2025-09-28T12:11:31} {cm:2025-09-28} {duration:23m}
 Ship Admin Account provision +central +onboarding +ship {due:2025-09-28}
 Crew account provision +central +onboarding +voyage
 Auth module +local +auth

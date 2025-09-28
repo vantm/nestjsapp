@@ -29,6 +29,9 @@ export class Ship {
   @Column({ type: 'varchar', length: 255, nullable: true })
   topicName: string;
 
+  @Column({ type: 'varchar', length: 500, nullable: true })
+  accessKey?: string;
+
   @CreateDateColumn()
   readonly createdAt: Date;
 
