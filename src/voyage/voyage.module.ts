@@ -1,6 +1,10 @@
 import { Module } from '@nestjs/common';
+import { User } from 'src/auth/user.model';
 import { DatabaseModule } from 'src/database/database.module';
-import { repositoryProvider } from 'src/database/repository.provider';
+import {
+  readonlyRepositoryProvider,
+  repositoryProvider,
+} from 'src/database/repository.provider';
 import { Passenger } from 'src/passenger/models/passenger.model';
 import { Ship } from 'src/ship/models/ship.model';
 import { Voyage } from './models/voyage.model';
@@ -11,9 +15,10 @@ import { VoyageService } from './voyage.service';
   imports: [DatabaseModule],
   controllers: [VoyageController],
   providers: [
-    repositoryProvider(Passenger),
-    repositoryProvider(Ship),
     repositoryProvider(Voyage),
+    readonlyRepositoryProvider(Passenger),
+    readonlyRepositoryProvider(Ship),
+    readonlyRepositoryProvider(User),
     VoyageService,
   ],
 })

@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, In } from 'typeorm';
+import { User } from '../auth/user.model';
 import { Passenger } from '../passenger/models/passenger.model';
 import { Ship } from '../ship/models/ship.model';
 import { CreateVoyageDto } from './dto/create-voyage.dto';
@@ -16,6 +17,8 @@ export class VoyageService {
     private readonly shipRepository: Repository<Ship>,
     @InjectRepository(Passenger)
     private readonly passengerRepository: Repository<Passenger>,
+    @InjectRepository(User)
+    private readonly userRepository: Repository<User>,
   ) {}
 
   async create(createVoyageDto: CreateVoyageDto) {
@@ -28,9 +31,16 @@ export class VoyageService {
             where: { id: In(createVoyageDto.guestIds) },
           })
         : [];
+    const crews =
+      createVoyageDto.crewIds && createVoyageDto.crewIds.length > 0
+        ? await this.userRepository.find({
+            where: { id: In(createVoyageDto.crewIds.map(String)) },
+          })
+        : [];
     const voyageData: Partial<Voyage> = {
       ...createVoyageDto,
       guests,
+      crews,
     };
     if (ship) {
       voyageData.ship = ship;
@@ -41,21 +51,21 @@ export class VoyageService {
 
   async findAll() {
     return this.voyageRepository.find({
-      relations: ['ship', 'guests'],
+      relations: ['ship', 'guests', 'crews'],
     });
   }
 
   async findOne(id: number) {
     return this.voyageRepository.findOne({
       where: { id },
-      relations: ['ship', 'guests'],
+      relations: ['ship', 'guests', 'crews'],
     });
   }
 
   async update(id: number, updateVoyageDto: UpdateVoyageDto) {
     const voyage = await this.voyageRepository.findOne({
       where: { id },
-      relations: ['ship', 'guests'],
+      relations: ['ship', 'guests', 'crews'],
     });
     if (!voyage) {
       return null;
@@ -71,6 +81,11 @@ export class VoyageService {
     if (updateVoyageDto.guestIds) {
       voyage.guests = await this.passengerRepository.find({
         where: { id: In(updateVoyageDto.guestIds) },
+      });
+    }
+    if (updateVoyageDto.crewIds) {
+      voyage.crews = await this.userRepository.find({
+        where: { id: In(updateVoyageDto.crewIds.map(String)) },
       });
     }
     Object.assign(voyage, updateVoyageDto);

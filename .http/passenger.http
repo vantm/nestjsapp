@@ -1,0 +1,43 @@
+@baseUrl = http://localhost:3000
+
+###
+# @name auth
+# @prompt accessToken Access Token
+GET {{baseUrl}}/health
+Authorization: Bearer {{accessToken}}
+
+###
+# @name createPassenger
+POST {{baseUrl}}/passenger
+Authorization: {{auth.request.headers.Authorization}}
+Content-Type: application/json
+
+{
+    "name": "Passenger #{{$randomInt 100000 999999}}",
+    "email": "passenger{{$randomInt 1000 9999}}@example.com"
+}
+
+###
+# @name getAllPassengers
+GET {{baseUrl}}/passenger
+Authorization: {{auth.request.headers.Authorization}}
+
+###
+# @name getPassengerById
+GET {{baseUrl}}/passenger/1
+Authorization: {{auth.request.headers.Authorization}}
+
+###
+# @name updatePassenger
+PATCH {{baseUrl}}/passenger/1
+Authorization: {{auth.request.headers.Authorization}}
+Content-Type: application/json
+
+{
+    "name": "Updated Passenger #{{$randomInt 100000 999999}}"
+}
+
+###
+# @name deletePassenger
+DELETE {{baseUrl}}/passenger/1
+Authorization: {{auth.request.headers.Authorization}}
