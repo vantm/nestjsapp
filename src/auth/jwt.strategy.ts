@@ -12,7 +12,10 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
         cache: true,
         rateLimit: true,
         jwksRequestsPerMinute: 10,
-        jwksUri: process.env.AUTH_JWKS_URI ?? '',
+        jwksUri:
+          process.env.AUTH_ISSUER != null
+            ? process.env.AUTH_ISSUER + '/.well-known/jwks.json'
+            : '',
       }),
       issuer: process.env.AUTH_ISSUER,
       // audience: process.env.AUTH_AUDIENCE,

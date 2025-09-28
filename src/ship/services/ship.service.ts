@@ -1,7 +1,7 @@
-import { Inject, Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { EventBus } from '@nestjs/cqrs';
+import { InjectRepository } from '@nestjs/typeorm';
 import { In, Not, Repository } from 'typeorm';
-import { SHIP_REPOSITORY } from 'src/ship/constants';
 import { CreateShipDto } from 'src/ship/dtos/create-ship.dto';
 import { ShipCreatedEvent } from 'src/ship/events/ship-created.event';
 import { ShipOnboardingCreatedEvent } from 'src/ship/events/ship-onboarding-created.event';
@@ -12,7 +12,7 @@ export class ShipService {
   private readonly logger = new Logger(ShipService.name);
 
   constructor(
-    @Inject(SHIP_REPOSITORY) private readonly ships: Repository<Ship>,
+    @InjectRepository(Ship) private readonly ships: Repository<Ship>,
     private readonly eventBus: EventBus,
   ) {}
 

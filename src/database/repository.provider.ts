@@ -2,15 +2,10 @@ import { Type, Provider } from '@nestjs/common';
 import { DataSource } from 'typeorm';
 import { POSTGRES_DATA_SOURCE } from './constants';
 
-type RepositoryProviderOptions = {
-  provide: string;
-  entityType: Type<any>;
-};
-
-export const repositoryProvider = (options: RepositoryProviderOptions) => {
-  const { provide, entityType } = options;
+export const repositoryProvider = (entityType: Type<any>) => {
   return {
-    provide: provide,
+    // provide: `${POSTGRES_DATA_SOURCE}_${entityType.name}Repository`,
+    provide: `${entityType.name}Repository`,
     inject: [POSTGRES_DATA_SOURCE],
     useFactory(dataSource: DataSource) {
       return dataSource.getRepository(entityType);

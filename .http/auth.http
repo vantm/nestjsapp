@@ -1,0 +1,15 @@
+@baseUrl = http://localhost:3000
+
+###
+# @name foo
+# @prompt accessToken Access Token
+GET {{baseUrl}}/health
+Authorization: Bearer {{accessToken}}
+
+###
+GET {{baseUrl}}/user
+Authorization: {{foo.request.headers.Authorization}}
+
+###
+POST {{baseUrl}}/auth/user-sync
+Authorization: {{foo.request.headers.Authorization}}
