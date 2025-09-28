@@ -13,22 +13,23 @@ export class PassengerService {
   ) {}
 
   create(createPassengerDto: CreatePassengerDto) {
-    return 'This action adds a new passenger';
+    const passenger = this.passengerRepository.create(createPassengerDto);
+    return this.passengerRepository.save(passenger);
   }
 
   findAll() {
-    return `This action returns all passenger`;
+    return this.passengerRepository.find();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} passenger`;
+    return this.passengerRepository.findOne({ where: { id } });
   }
 
   update(id: number, updatePassengerDto: UpdatePassengerDto) {
-    return `This action updates a #${id} passenger`;
+    return this.passengerRepository.update(id, updatePassengerDto);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} passenger`;
+    return this.passengerRepository.delete(id);
   }
 }

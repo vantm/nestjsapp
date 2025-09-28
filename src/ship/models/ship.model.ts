@@ -5,6 +5,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Voyage } from 'src/voyage/models/voyage.model';
 
 export enum ShipStatus {
   Pending = 'pending',
@@ -33,6 +34,8 @@ export class Ship {
 
   @UpdateDateColumn()
   readonly updatedAt: Date;
+
+  voyages: Voyage[];
 
   public completeOnboarding(topicName: string) {
     this.status = ShipStatus.Active;
