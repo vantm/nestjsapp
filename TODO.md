@@ -1,25 +1,9 @@
-# TODO
-
-## Central Hub
-
-- [ ] Passenger Module
-  - CRUD
-- [ ] Voyage Module
-  - CRUD
-- [ ] Complete Ship Onboarding
-  - Local Hub Access Token provision
-  - Ship Admin Account provision
-- [ ] Voyage Onboarding Process
-  - Crew account provision
-
-## Local Hub
-
-- [ ] Auth Module
-- [ ] Pulling required data
-  - Adming
-  - Ongoing Voyages and their:
-    - Guests
-    - Crews
-    - Crew accounts
-- [ ] Transaction data synchronization
-  - Check In data
+Passenger Module CRUD +central +passenger {cm:2025-09-28}
+Voyage Module CRUD +central +voyage {cm:2025-09-28}
+Local Hub Access Token provision +central +onboarding +ship {due:2025-09-28} {start:2025-09-28T12:11:31}
+Ship Admin Account provision +central +onboarding +ship {due:2025-09-28}
+Crew account provision +central +onboarding +voyage
+Auth module +local +auth
+Admin data +local +sync
+Voyage data pulling (guests, crews, local accounts) +local +sync
+Transaction data (check-in) sync +local +sync
