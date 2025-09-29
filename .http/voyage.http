@@ -1,0 +1,26 @@
+@baseUrl = http://localhost:3000
+
+###
+# @prompt accessToken Access Token
+# @name foo
+GET {{baseUrl}}/health
+Authorization: Bearer {{accessToken}}
+
+
+### Get all topics
+GET {{baseUrl}}/voyage
+Authorization: {{foo.request.headers.Authorization}}
+
+
+### Create voyage
+POST {{baseUrl}}/voyage
+Authorization: {{foo.request.headers.Authorization}}
+Content-Type: application/json
+
+{
+  "title": "Voyage #{{$randomInt 100000 999999}}",
+  "shipId": 10,
+  "guestIds": [3, 4, 5, 6],
+  "crewIds": [1]
+}
+

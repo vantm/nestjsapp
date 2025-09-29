@@ -5,11 +5,12 @@ import {
   JoinTable,
   ManyToMany,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { User } from 'src/auth/user.model';
 import { Passenger } from 'src/passenger/models/passenger.model';
 import { Ship } from 'src/ship/models/ship.model';
+import { VoyageCrew } from './voyage-crew.model';
 
 @Entity()
 export class Voyage {
@@ -30,7 +31,6 @@ export class Voyage {
   @JoinTable()
   guests: Passenger[];
 
-  @ManyToMany(() => User)
-  @JoinTable()
-  crews: User[];
+  @OneToMany(() => VoyageCrew, (crew) => crew.voyage)
+  crews: VoyageCrew[];
 }

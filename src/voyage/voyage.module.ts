@@ -7,6 +7,7 @@ import {
 } from 'src/database/repository.provider';
 import { Passenger } from 'src/passenger/models/passenger.model';
 import { Ship } from 'src/ship/models/ship.model';
+import { VoyageCrew } from './models/voyage-crew.model';
 import { Voyage } from './models/voyage.model';
 import { VoyageController } from './voyage.controller';
 import { VoyageService } from './voyage.service';
@@ -16,6 +17,7 @@ import { VoyageService } from './voyage.service';
   controllers: [VoyageController],
   providers: [
     repositoryProvider(Voyage),
+    repositoryProvider(VoyageCrew),
     readonlyRepositoryProvider(Passenger),
     readonlyRepositoryProvider(Ship),
     readonlyRepositoryProvider(User),

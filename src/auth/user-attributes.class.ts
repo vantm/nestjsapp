@@ -1,7 +1,7 @@
 import { User } from './user.model';
 
 export class UserAttributes {
-  id: string;
+  id: number;
   emailVerified: boolean;
   enable: boolean;
 
