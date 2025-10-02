@@ -8,7 +8,7 @@ import {
   Delete,
   UseGuards,
 } from '@nestjs/common';
-import { JwtGuard } from 'src/auth/jwt.guard';
+import { JwtGuard } from 'src/auth/guards/jwt.guard';
 import { CreatePassengerDto } from './dto/create-passenger.dto';
 import { UpdatePassengerDto } from './dto/update-passenger.dto';
 import { PassengerService } from './passenger.service';

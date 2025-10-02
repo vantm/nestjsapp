@@ -1,30 +1,11 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ofType, Saga } from '@nestjs/cqrs';
-import { map, Observable, tap } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { TopicCreationCommand } from 'src/common/commands/topic-creation.command';
 import { TopicCreatedEvent } from 'src/common/events/topic-created.event';
 import { ShipOnboardingCompletionCommand } from 'src/ship/commands/ship-onboarding-completion.command';
 import { ShipOnboardingCreatedEvent } from 'src/ship/events/ship-onboarding-created.event';
-
-const tapLogEvent =
-  <T>(logger: Logger) =>
-  (source: Observable<T>): Observable<T> => {
-    return source.pipe(
-      tap((event: T) => {
-        logger.debug('An event was received: ' + JSON.stringify(event));
-      }),
-    );
-  };
-
-const tapLogCommand =
-  <T>(logger: Logger) =>
-  (source: Observable<T>): Observable<T> => {
-    return source.pipe(
-      tap((command: T) => {
-        logger.debug('A command was created: ' + JSON.stringify(command));
-      }),
-    );
-  };
+import { tapLogCommand, tapLogEvent } from './log.util';
 
 @Injectable()
 export class ShipOnboardingSaga {

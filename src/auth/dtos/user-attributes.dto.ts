@@ -1,6 +1,6 @@
-import { User } from './user.model';
+import { User } from '../models/user.model';
 
-export class UserAttributes {
+export class UserAttributesDto {
   id: number;
   emailVerified: boolean;
   enable: boolean;

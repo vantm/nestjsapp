@@ -33,6 +33,9 @@ export class User {
   @Column()
   enable: boolean;
 
+  @Column({ nullable: true, length: 200 })
+  password?: string; // TODO hash password
+
   @Column({ nullable: true })
   status?: string;
 

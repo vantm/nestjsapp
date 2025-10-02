@@ -6,11 +6,14 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
-import { CreateVoyageDto } from './dto/create-voyage.dto';
-import { UpdateVoyageDto } from './dto/update-voyage.dto';
-import { VoyageService } from './voyage.service';
+import { JwtGuard } from 'src/auth/guards/jwt.guard';
+import { CreateVoyageDto } from '../dto/create-voyage.dto';
+import { UpdateVoyageDto } from '../dto/update-voyage.dto';
+import { VoyageService } from '../services/voyage.service';
 
+@UseGuards(JwtGuard)
 @Controller('voyage')
 export class VoyageController {
   constructor(private readonly voyageService: VoyageService) {}
@@ -18,6 +21,11 @@ export class VoyageController {
   @Post()
   create(@Body() createVoyageDto: CreateVoyageDto) {
     return this.voyageService.create(createVoyageDto);
+  }
+
+  @Post(':id/onboarding')
+  onboard(@Param('id') id: string) {
+    return this.voyageService.startOnboarding(+id);
   }
 
   @Get()

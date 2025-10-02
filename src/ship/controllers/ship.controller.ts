@@ -7,7 +7,7 @@ import {
   Post,
   UseGuards,
 } from '@nestjs/common';
-import { JwtGuard } from 'src/auth/jwt.guard';
+import { JwtGuard } from 'src/auth/guards/jwt.guard';
 import { CreateShipDto } from '../dtos/create-ship.dto';
 import { ShipService } from '../services/ship.service';
 

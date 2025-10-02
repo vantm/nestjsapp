@@ -1,6 +1,6 @@
 import { Controller, HttpCode, Logger, Post, UseGuards } from '@nestjs/common';
-import { JwtGuard } from './jwt.guard';
-import { TaskService } from './task.service';
+import { JwtGuard } from '../guards/jwt.guard';
+import { TaskService } from '../services/task.service';
 
 @Controller('auth')
 export class AuthController {

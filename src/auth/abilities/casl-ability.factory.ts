@@ -4,9 +4,9 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Topic } from 'src/common/models/topic.model';
 import { Ship } from 'src/ship/models/ship.model';
-import { Action } from './action.enum';
-import { UserAttributes } from './user-attributes.class';
-import { User } from './user.model';
+import { UserAttributesDto } from '../dtos/user-attributes.dto';
+import { Action } from '../enums/action.enum';
+import { User } from '../models/user.model';
 
 type Subjects = typeof User | typeof Ship | typeof Topic;
 
@@ -44,7 +44,7 @@ export class CaslAbilityFactory {
       return build();
     }
 
-    const attributes = new UserAttributes(user);
+    const attributes = new UserAttributesDto(user);
 
     if (!attributes.emailVerified || !attributes.enable) {
       const reason = !attributes.emailVerified

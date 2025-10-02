@@ -1,26 +1,24 @@
 import { Module } from '@nestjs/common';
-import { User } from 'src/auth/user.model';
+import { CqrsModule } from '@nestjs/cqrs';
+import { User } from 'src/auth/models/user.model';
 import { DatabaseModule } from 'src/database/database.module';
-import {
-  readonlyRepositoryProvider,
-  repositoryProvider,
-} from 'src/database/repository.provider';
+import { repositoryProvider } from 'src/database/repository.provider';
 import { Passenger } from 'src/passenger/models/passenger.model';
 import { Ship } from 'src/ship/models/ship.model';
+import { VoyageController } from './controllers/voyage.controller';
 import { VoyageCrew } from './models/voyage-crew.model';
 import { Voyage } from './models/voyage.model';
-import { VoyageController } from './voyage.controller';
-import { VoyageService } from './voyage.service';
+import { VoyageService } from './services/voyage.service';
 
 @Module({
-  imports: [DatabaseModule],
+  imports: [DatabaseModule, CqrsModule],
   controllers: [VoyageController],
   providers: [
     repositoryProvider(Voyage),
     repositoryProvider(VoyageCrew),
-    readonlyRepositoryProvider(Passenger),
-    readonlyRepositoryProvider(Ship),
-    readonlyRepositoryProvider(User),
+    repositoryProvider(Passenger),
+    repositoryProvider(Ship),
+    repositoryProvider(User),
     VoyageService,
   ],
 })

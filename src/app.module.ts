@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { ScheduleModule } from '@nestjs/schedule';
 import { AuthModule } from './auth/auth.module';
+import { ClientSyncModule } from './client-sync/client-sync.module';
 import { CommonModule } from './common/common.module';
 import { HealthModule } from './health/health.module';
 import { OnboardingModule } from './onboarding/onboarding.module';
@@ -20,6 +21,7 @@ import { VoyageModule } from './voyage/voyage.module';
     OnboardingModule,
     PassengerModule,
     VoyageModule,
+    ClientSyncModule,
   ],
 })
 export class AppModule {}

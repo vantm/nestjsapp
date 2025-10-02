@@ -1,0 +1,7 @@
+@baseUrl = http://localhost:3000
+@accessKey = sak-7ed1fa2b-a7dc-46ff-9836-e054998393c2
+
+### Sync
+
+GET {{baseUrl}}/sync/info
+x-api-key: {{accessKey}}
