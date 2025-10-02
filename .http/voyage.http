@@ -19,8 +19,12 @@ Content-Type: application/json
 
 {
   "title": "Voyage #{{$randomInt 100000 999999}}",
-  "shipId": 10,
-  "guestIds": [3, 4, 5, 6],
+  "shipId": 1,
+  "guestIds": [5, 6, 7, 8],
   "crewIds": [1]
 }
 
+### Onboarding a voyage
+# @prompt voyageId Voyage ID
+POST {{baseUrl}}/voyage/{{voyageId}}/onboarding
+Authorization: {{foo.request.headers.Authorization}}

@@ -1,7 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { EventBus } from '@nestjs/cqrs';
 import { InjectRepository } from '@nestjs/typeorm';
-import { default as _ } from 'lodash';
 import { In, Not, Repository } from 'typeorm';
 import { CreateShipDto } from 'src/ship/dtos/create-ship.dto';
 import { ShipCreatedEvent } from 'src/ship/events/ship-created.event';
@@ -15,7 +14,7 @@ export class ShipService {
   constructor(
     @InjectRepository(Ship) private readonly ships: Repository<Ship>,
     private readonly eventBus: EventBus,
-  ) {}
+  ) { }
 
   async startOnboarding(createShipDto: CreateShipDto) {
     this.logger.debug('Starting onboarding for ship: ' + createShipDto.name);
@@ -71,20 +70,6 @@ export class ShipService {
       },
     });
 
-    return _.map(ships, reactAccessKey);
+    return ships;
   }
-}
-
-function reactAccessKey(ship: Ship): Ship {
-  if (ship.accessKey) {
-    if (ship.accessKey.length <= 20) {
-      ship.accessKey = ship.accessKey.replace(/.(?=.{6})/g, '*');
-    } else {
-      const prefix = ship.accessKey.slice(0, 6);
-      const suffix = ship.accessKey.slice(-6);
-      ship.accessKey = prefix + '***' + suffix;
-    }
-  }
-
-  return ship;
 }

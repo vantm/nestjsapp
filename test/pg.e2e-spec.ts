@@ -25,6 +25,6 @@ describe('PgController (e2e)', () => {
 
     expect(res.rowCount).toBe(1);
     expect(res.rows[0]).toBeDefined();
-    expect(res.rows[0].result).toBe(2);
+    expect(res.rows[0].result!).toBe(2);
   });
 });

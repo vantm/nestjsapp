@@ -1,7 +1,26 @@
 @baseUrl = http://localhost:3000
-@accessKey = sak-7ed1fa2b-a7dc-46ff-9836-e054998393c2
 
-### Sync
-
-GET {{baseUrl}}/sync/info
+###
+# @name base
+# @prompt accessKey
+GET {{baseUrl}}/health
 x-api-key: {{accessKey}}
+
+
+### Info
+GET {{baseUrl}}/sync/info
+x-api-key: {{base.request.headers.x-api-key}}
+
+### Voyages
+GET {{baseUrl}}/sync/voyages
+x-api-key: {{base.request.headers.x-api-key}}
+
+### Users of voyage
+# @prompt voyageId Voyage ID
+GET {{baseUrl}}/sync/voyages/{{voyageId}}/users
+x-api-key: {{base.request.headers.x-api-key}}
+
+### Guests of voyage
+# @prompt voyageId Voyage ID
+GET {{baseUrl}}/sync/voyages/{{voyageId}}/guests
+x-api-key: {{base.request.headers.x-api-key}}

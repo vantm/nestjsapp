@@ -170,11 +170,11 @@ export class VoyageService {
       throw new NotFoundException('Voyage not found');
     }
 
-    if (voyage.status != VoyageStatus.SCHEDULED) {
-      throw new BadRequestException('Only scheduled voyages can be onboarded');
+    if (voyage.status != VoyageStatus.DRAFT) {
+      throw new BadRequestException('Only draft voyages can be onboarded');
     }
 
-    voyage.status = VoyageStatus.ONGOING;
+    voyage.status = VoyageStatus.SCHEDULED;
 
     this.eventBus.publish(new VoyageOnboardingCreatedEvent(voyage.id));
 

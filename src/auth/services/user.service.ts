@@ -27,7 +27,9 @@ export class UserService {
     const client = new CognitoIdentityProviderClient({
       region: process.env.AWS_REGION_ID,
       // TODO: support ACCESS_KEY_ID and SECRET_ACCESS_KEY instead
-      credentials: fromSSO({ profile: 'default' }),
+      credentials: fromSSO({
+        profile: process.env.AWS_SSO_PROFILE || 'default',
+      }),
     });
 
     let previousPaginationToken: string | undefined = undefined;

@@ -11,5 +11,9 @@ GET {{baseUrl}}/user
 Authorization: {{foo.request.headers.Authorization}}
 
 ###
+GET {{baseUrl}}/user/me
+Authorization: {{foo.request.headers.Authorization}}
+
+###
 POST {{baseUrl}}/auth/user-sync
 Authorization: {{foo.request.headers.Authorization}}
