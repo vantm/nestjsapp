@@ -14,7 +14,7 @@ export class ShipService {
   constructor(
     @InjectRepository(Ship) private readonly ships: Repository<Ship>,
     private readonly eventBus: EventBus,
-  ) { }
+  ) {}
 
   async startOnboarding(createShipDto: CreateShipDto) {
     this.logger.debug('Starting onboarding for ship: ' + createShipDto.name);
