@@ -2,11 +2,11 @@ import { AbilityBuilder, PureAbility } from '@casl/ability';
 import { Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { UserAttributesDto } from '@app/auth/dtos/user-attributes.dto';
+import { Action } from '@app/auth/enums/action.enum';
+import { User } from '@app/auth/models/user.model';
 import { Topic } from 'src/common/models/topic.model';
 import { Ship } from 'src/ship/models/ship.model';
-import { UserAttributesDto } from '../dtos/user-attributes.dto';
-import { Action } from '../enums/action.enum';
-import { User } from '../models/user.model';
 
 type Subjects = typeof User | typeof Ship | typeof Topic;
 

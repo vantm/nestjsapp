@@ -1,7 +1,7 @@
 import { Controller, Get, UseGuards, Request, Param } from '@nestjs/common';
+import { SyncService } from '@app/client-sync/services/sync.service';
 import { ClientAttributesDto } from 'src/auth/dtos/client-attributes.dto';
 import { AccessKeyGuard } from 'src/auth/guards/access-key.guard';
-import { SyncService } from '../services/sync.service';
 
 @UseGuards(AccessKeyGuard)
 @Controller('sync')

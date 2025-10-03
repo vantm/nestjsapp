@@ -3,8 +3,8 @@ import { PassportStrategy } from '@nestjs/passport';
 import { InjectRepository } from '@nestjs/typeorm';
 import { HeaderAPIKeyStrategy } from 'passport-headerapikey';
 import { Repository } from 'typeorm';
+import { ClientAttributesDto } from '@app/auth/dtos/client-attributes.dto';
 import { Ship, ShipStatus } from 'src/ship/models/ship.model';
-import { ClientAttributesDto } from '../dtos/client-attributes.dto';
 
 @Injectable()
 export class AcccessKeyStrategy extends PassportStrategy<

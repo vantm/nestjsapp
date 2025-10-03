@@ -7,7 +7,7 @@ import { fromSSO } from '@aws-sdk/credential-providers';
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { User } from '../models/user.model';
+import { User } from '@app/auth/models/user.model';
 
 @Injectable()
 export class UserService {

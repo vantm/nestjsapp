@@ -25,6 +25,7 @@ describe('PgController (e2e)', () => {
 
     expect(res.rowCount).toBe(1);
     expect(res.rows[0]).toBeDefined();
-    expect(res.rows[0].result!).toBe(2);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    expect(res.rows[0].result).toBe(2);
   });
 });

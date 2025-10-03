@@ -7,15 +7,15 @@ import {
 import { EventBus } from '@nestjs/cqrs';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, In, DataSource } from 'typeorm';
+import { User } from '@app/auth/models/user.model';
+import { Passenger } from '@app/passenger/models/passenger.model';
+import { Ship } from '@app/ship/models/ship.model';
+import { CreateVoyageDto } from '@app/voyage/dto/create-voyage.dto';
+import { UpdateVoyageDto } from '@app/voyage/dto/update-voyage.dto';
+import { VoyageOnboardingCreatedEvent } from '@app/voyage/events/voyage-onboarding-created.event';
+import { VoyageCrew } from '@app/voyage/models/voyage-crew.model';
+import { Voyage, VoyageStatus } from '@app/voyage/models/voyage.model';
 import { POSTGRES_DATA_SOURCE } from 'src/database/constants';
-import { User } from '../../auth/models/user.model';
-import { Passenger } from '../../passenger/models/passenger.model';
-import { Ship } from '../../ship/models/ship.model';
-import { CreateVoyageDto } from '../dto/create-voyage.dto';
-import { UpdateVoyageDto } from '../dto/update-voyage.dto';
-import { VoyageOnboardingCreatedEvent } from '../events/voyage-onboarding-created.event';
-import { VoyageCrew } from '../models/voyage-crew.model';
-import { Voyage, VoyageStatus } from '../models/voyage.model';
 
 // TODO: Fix call to other module
 

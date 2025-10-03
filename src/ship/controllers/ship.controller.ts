@@ -7,9 +7,9 @@ import {
   Post,
   UseGuards,
 } from '@nestjs/common';
+import { CreateShipDto } from '@app/ship/dtos/create-ship.dto';
+import { ShipService } from '@app/ship/services/ship.service';
 import { JwtGuard } from 'src/auth/guards/jwt.guard';
-import { CreateShipDto } from '../dtos/create-ship.dto';
-import { ShipService } from '../services/ship.service';
 
 @Controller('ship')
 @UseGuards(JwtGuard)

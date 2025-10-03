@@ -8,10 +8,10 @@ import {
   Delete,
   UseGuards,
 } from '@nestjs/common';
+import { CreateVoyageDto } from '@app/voyage/dto/create-voyage.dto';
+import { UpdateVoyageDto } from '@app/voyage/dto/update-voyage.dto';
+import { VoyageService } from '@app/voyage/services/voyage.service';
 import { JwtGuard } from 'src/auth/guards/jwt.guard';
-import { CreateVoyageDto } from '../dto/create-voyage.dto';
-import { UpdateVoyageDto } from '../dto/update-voyage.dto';
-import { VoyageService } from '../services/voyage.service';
 
 @UseGuards(JwtGuard)
 @Controller('voyage')

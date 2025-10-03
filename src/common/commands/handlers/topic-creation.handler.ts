@@ -1,6 +1,6 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
+import { TopicCreationCommand } from '@app/common/commands/topic-creation.command';
 import { TopicService } from 'src/common/services/topic.service';
-import { TopicCreationCommand } from '../topic-creation.command';
 
 @CommandHandler(TopicCreationCommand)
 export class TopicCreationHandler

@@ -2,9 +2,9 @@ import { Injectable, Logger } from '@nestjs/common';
 import { EventBus } from '@nestjs/cqrs';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { CreateTopicDto } from '../dtos/create-topic.dto';
-import { TopicCreatedEvent } from '../events/topic-created.event';
-import { Topic } from '../models/topic.model';
+import { CreateTopicDto } from '@app/common/dtos/create-topic.dto';
+import { TopicCreatedEvent } from '@app/common/events/topic-created.event';
+import { Topic } from '@app/common/models/topic.model';
 
 @Injectable()
 export class TopicService {

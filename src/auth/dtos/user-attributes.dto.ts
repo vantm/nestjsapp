@@ -1,4 +1,4 @@
-import { User } from '../models/user.model';
+import { User } from '@app/auth/models/user.model';
 
 export class UserAttributesDto {
   id: number;

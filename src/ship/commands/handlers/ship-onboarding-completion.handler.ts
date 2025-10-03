@@ -1,6 +1,6 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
+import { ShipOnboardingCompletionCommand } from '@app/ship/commands/ship-onboarding-completion.command';
 import { ShipService } from 'src/ship/services/ship.service';
-import { ShipOnboardingCompletionCommand } from '../ship-onboarding-completion.command';
 
 @CommandHandler(ShipOnboardingCompletionCommand)
 export class ShipOnboardingCompletionHandler

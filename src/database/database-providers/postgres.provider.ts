@@ -1,6 +1,6 @@
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DataSource } from 'typeorm';
-import { POSTGRES_DATA_SOURCE } from '../constants';
+import { POSTGRES_DATA_SOURCE } from '@app/database/constants';
 
 export const postgresProvider = {
   provide: POSTGRES_DATA_SOURCE,
